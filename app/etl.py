@@ -3,10 +3,8 @@ from sqlalchemy.orm import Session
 from .db import Product, Analytics
 
 def process_and_store_products(df: pd.DataFrame, db: Session):
-    # Clear old data
     db.query(Product).delete()
     db.commit()
-    # Insert new data
     for _, row in df.iterrows():
         product = Product(
             id=int(row["id"]),
@@ -32,7 +30,7 @@ def compute_analytics(db: Session):
     avg_price = df["price"].mean()
     avg_rating = df["rating"].mean()
     top_category = df["category"].mode()[0]
-    # Store analytics
+
     db.merge(Analytics(metric="average_price", value=str(avg_price)))
     db.merge(Analytics(metric="average_rating", value=str(avg_rating)))
     db.merge(Analytics(metric="top_category", value=str(top_category)))
