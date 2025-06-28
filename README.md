@@ -21,3 +21,15 @@ A Python FastAPI microservice for ingesting, analyzing, and exposing analytics o
 
 ## Testing
 
+1. Upload Data
+ - User POSTs sample_products.csv to /upload
+ - Backend reads the CSV, stores products in DB, computes analytics
+
+2. Analytics Computed
+ - Average price: 443.6
+ - Top category: Electronics
+ - Average rating: 4.44
+
+3. Get Insights
+ - User GETs /insights
+ - Service returns latest analytics as JSON
