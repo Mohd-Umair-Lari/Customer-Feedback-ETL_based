@@ -1,4 +1,4 @@
-# Insight-Microservice-ETL_based
+# Customer-Feedback-ETL_based
 
 A Python FastAPI microservice for ingesting, analyzing, and exposing analytics on e-commerce product data.
 
